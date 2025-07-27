@@ -1,0 +1,126 @@
+.service-homepage {
+    position: relative;
+    background: linear-gradient(135deg, #f0ecff, #e2dbff); // contraste suave lavanda
+    padding: 80px 40px;
+    text-align: center;
+    overflow: hidden;
+  
+    /* Fondo animado */
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png'),
+        radial-gradient(circle at 20% 20%, rgba(173, 140, 255, 0.4), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(116, 72, 255, 0.4), transparent 50%);
+      opacity: 0.4;
+      animation: move-bg 25s linear infinite;
+      z-index: 0;
+    }
+  
+    @keyframes move-bg {
+      0% { background-position: 0 0, 0 0, 0 0; }
+      100% { background-position: 120px 120px, 250px 250px, 400px 400px; }
+    }
+  
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+  
+    .section-subtitle {
+      color: #5d2eff;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+  
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #150734;
+      margin-bottom: 50px;
+    }
+  
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      justify-content: center;
+    }
+  
+    .service-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 28px rgba(93, 46, 255, 0.25);
+      }
+  
+      .card-header {
+        margin-bottom: 20px;
+  
+        h3 {
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: #2c205f;
+          margin-bottom: 8px;
+        }
+  
+        p {
+          font-size: 0.95rem;
+          color: #555;
+          line-height: 1.4;
+        }
+      }
+  
+      .card-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 20px 0;
+        width: 100%;
+        text-align: left;
+  
+        li {
+          padding-left: 20px;
+          margin-bottom: 8px;
+          position: relative;
+          color: #444;
+  
+          &::before {
+            content: "✔";
+            color: #7448ff;
+            position: absolute;
+            left: 0;
+          }
+        }
+      }
+  
+      .card-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 40px;
+        background: linear-gradient(135deg, #5d2eff, #7448ff);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 4px 14px rgba(93, 46, 255, 0.4);
+        }
+      }
+    }
+  }
+  

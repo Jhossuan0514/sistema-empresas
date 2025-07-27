@@ -1,0 +1,70 @@
+<mat-card class="empresa-form-card">
+  <mat-card-title>{{ modoEdicion ? 'Editar Empresa' : 'Registro de Empresa' }}</mat-card-title>
+  
+  <div *ngIf="modoEdicion" class="info-id">
+    <span><strong>ID de empresa:</strong> {{ empresaId }}</span>
+  </div>
+  
+
+
+  <form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre de la empresa</mat-label>
+        <input matInput formControlName="nombreEmpresa" placeholder="Ej: Computer & Electronic" />
+        <mat-error *ngIf="empresaForm.get('nombreEmpresa')?.hasError('required')">
+          El nombre es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>NIT</mat-label>
+        <input matInput formControlName="nitEmpresa" placeholder="Ej: 123456789-0" />
+        <mat-error *ngIf="empresaForm.get('nitEmpresa')?.hasError('required')">
+          El NIT es obligatorio
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="direccionEmpresa" placeholder="Ej: Calle 123 # 45-67" />
+        <mat-error *ngIf="empresaForm.get('direccionEmpresa')?.hasError('required')">
+          La dirección es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Ciudad</mat-label>
+        <input matInput formControlName="ciudadEmpresa" placeholder="Ej: Bogotá" />
+        <mat-error *ngIf="empresaForm.get('ciudadEmpresa')?.hasError('required')">
+          La ciudad es obligatoria
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Correo electrónico</mat-label>
+        <input matInput type="email" formControlName="correoEmpresa" placeholder="Ej: contacto@empresa.com" />
+        <mat-error *ngIf="empresaForm.get('correoEmpresa')?.hasError('email')">
+          El correo no es válido
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Teléfono</mat-label>
+        <input matInput type="tel" formControlName="telefonoEmpresa" placeholder="Ej: 3101234567" />
+        <mat-error *ngIf="empresaForm.get('telefonoEmpresa')?.hasError('pattern')">
+          Teléfono inválido (mínimo 7 y máximo 10 dígitos)
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div class="botones">
+      <button mat-raised-button color="primary" type="submit" [disabled]="empresaForm.invalid">
+        {{ modoEdicion ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="onCancel()">Cancelar</button>
+    </div>
+  </form>
+</mat-card>

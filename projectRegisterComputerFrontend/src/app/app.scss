@@ -1,0 +1,185 @@
+/* --- Estilos Generales y Tipografía --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Asegúrate de que esta fuente esté importada globalmente (ej. en index.html) */
+  background-color: #f0f2f5;
+}
+
+/* --- Contenedor Principal del Sidenav --- */
+.app-sidenav-container {
+  height: 100vh;
+  background-color: #f0f2f5;
+}
+
+/* --- La BARRA LATERAL (SIDENAV) - Header se mantiene como lo último que revisamos --- */
+.app-sidenav {
+  width: 250px;
+  background: linear-gradient(135deg, #34137a, #2d1461);; /* Degradado similar al home */
+  color: #ffffff;
+  box-shadow: 3px 0 10px rgba(0, 0, 0, 0.15);
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+}
+
+.sidebar-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: brightness(1.2);
+}
+
+.app-sidebar-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff; /* Este ya lo habíamos cambiado a blanco */
+  text-align: center;
+}
+
+/* Estilos específicos para la LISTA DE NAVEGACIÓN DENTRO DEL SIDENAV */
+mat-nav-list {
+  padding-top: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  /* Estilos para CADA ÍTEM de la lista de navegación */
+  a.mat-list-item {
+    color: #bdc3c7; /* Color general del ítem (puede ser sobrescrito por el span) */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
+    padding: 12px 16px;
+    height: auto;
+    border-left: 4px solid transparent;
+    display: flex;
+    align-items: center;
+    
+    // --- ¡¡¡CAMBIO CLAVE AQUÍ PARA EL ESPACIADO!!! ---
+    // Usamos 'gap' para el espacio entre el icono y el texto
+    gap: 1.2rem; /* Aumentado el espacio entre el icono y el texto, prueba con 1rem, 1.2rem, 1.5rem */
+    
+    text-decoration: none;
+
+    mat-icon {
+      color: white; /* Gris más oscuro para iconos inactivos */
+      transition: color 0.2s ease;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // Eliminado `margin-right` aquí porque `gap` en el padre es mejor.
+    }
+
+    span {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: 'Inter', sans-serif;
+      
+      // --- ¡¡¡CAMBIO CLAVE AQUÍ PARA EL COLOR DEL TEXTO BLANCO!!! ---
+      color: #ffffff; /* ¡¡¡Texto de los elementos de navegación en blanco!!! */
+    }
+
+    &:hover {
+      background-color: #34495e;
+      color: #ffffff; /* Esto asegura que todo el ítem sea blanco en hover */
+      mat-icon {
+        color: #ffffff;
+      }
+      span {
+          color: #ffffff; /* Asegura que el texto sea blanco en hover */
+      }
+    }
+    &.active-link {
+      background-color: #007bff;
+      color: #ffffff; /* Esto asegura que todo el ítem sea blanco cuando está activo */
+      font-weight: 600;
+      border-left-color: #ffffff;
+      mat-icon {
+        color: #ffffff;
+      }
+      span {
+          color: #ffffff; /* Asegura que el texto sea blanco cuando está activo */
+      }
+    }
+  }
+}
+
+/* --- La BARRA SUPERIOR (TOOLBAR) - Mantener --- */
+.app-toolbar {
+  background-color: #ffffff;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  height: 64px;
+  padding: 0 24px;
+
+  .mat-icon-button {
+    color: #555;
+  }
+
+  .toolbar-logo {
+    height: 36px;
+    margin-left: 1rem;
+    margin-right: 0.8rem;
+    filter: brightness(0.9);
+  }
+
+  .toolbar-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .user-welcome {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+    margin-right: 1rem;
+  }
+}
+
+/* --- Área de Contenido Principal (donde se carga Dashboard, Empresas, etc.) --- */
+.main-content-area {
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+  box-sizing: border-box;
+}
+
+/* Opcional: Media queries para responsive */
+@media (max-width: 768px) {
+  .app-sidenav {
+    width: 200px;
+  }
+  .app-sidenav-content {
+    .mat-toolbar {
+        .toolbar-title {
+            font-size: 1.2rem;
+        }
+        .toolbar-logo {
+            height: 30px;
+        }
+        .user-welcome {
+            display: none;
+        }
+    }
+  }
+}

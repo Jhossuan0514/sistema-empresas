@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+
+  @include theme-transition;
+  @include theme-surface($color-bg, $color-text);
+}
+
+/* Compatibilidad con Angular Material dialogs */
+.mat-mdc-dialog-container,
+.mat-dialog-container {
+  overflow: hidden !important;
+}
+
+/* Tema oscuro */
+body.dark-theme {
+  @include theme-surface($dark-bg, $dark-text);
+
+  .mat-toolbar {
+    background-color: $dark-surface;
+    color: $dark-text;
+  }
+
+  .mat-sidenav {
+    background-color: $dark-surface;
+  }
+
+  .mat-card {
+    background-color: $dark-surface;
+    color: $dark-text;
+  }
+}
+

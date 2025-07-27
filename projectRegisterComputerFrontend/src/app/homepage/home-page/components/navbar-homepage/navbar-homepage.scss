@@ -1,0 +1,92 @@
+.navbar {
+  background-color: #150734; /* El color de fondo principal (azul oscuro) */
+  color: white;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .navbar-container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+    max-width: 100%;
+    margin: 0 auto;
+    height: 80px;
+    padding: 0; 
+  }
+
+  .navbar-logo-wrapper {
+    width: 380px; 
+    height: 100%;
+    background: white;
+    clip-path: polygon(0 0, 90% 0, 75% 100%, 0% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    padding-left: 10px; 
+  }
+
+  .logo-img {
+    height: 120px;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px; 
+    padding-right: 30px; 
+    li a {
+      color: #e2e2e2;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .login-button-animated {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 40px;
+    font-weight: 600;
+    background: linear-gradient(135deg, #5d2eff, #7448ff);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 14px rgba(93, 46, 255, 0.4);
+    
+
+    margin-right: 30px; /* Añadido para dar espacio al botón del borde derecho */
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(93, 46, 255, 0.6);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0)
+      );
+      transition: left 0.5s ease;
+      z-index: 0;
+    }
+
+    &:hover::after {
+      left: 100%;
+    }
+  }
+}

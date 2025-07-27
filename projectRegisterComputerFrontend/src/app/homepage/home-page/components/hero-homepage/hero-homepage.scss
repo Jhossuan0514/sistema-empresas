@@ -1,0 +1,197 @@
+.hero-home {
+  position: relative;
+  background: linear-gradient(135deg, #150734, #2d1461);
+  color: #fff;
+  padding: 80px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+ 
+
+  .hero-content {
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1s ease forwards;
+
+    .text-container {
+      flex: 1 1 500px;
+      padding: 20px;
+      animation: fadeInLeft 1.2s ease forwards;
+
+      .subtitle {
+        font-size: 1rem;
+        color: #c9b4ff;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        animation: slideIn 1s ease forwards;
+      }
+
+      .title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        animation: fadeInLeft 1.2s ease forwards;
+      }
+
+      .description {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        color: #e0dbf4;
+        animation: fadeInLeft 1.4s ease forwards;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 20px;
+
+        .hero-button {
+          position: relative;
+          overflow: hidden;
+          padding: 12px 28px;
+          border-radius: 40px;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          animation: fadeInUp 1.6s ease forwards;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(
+              120deg,
+              rgba(255, 255, 255, 0.15),
+              rgba(255, 255, 255, 0)
+            );
+            transition: left 0.5s ease;
+            z-index: 0;
+          }
+
+          &:hover::after {
+            left: 100%;
+          }
+
+          &:hover {
+            transform: translateY(-3px);
+          }
+
+          &.primary {
+            background: linear-gradient(135deg, #5d2eff, #7448ff);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 14px rgba(93, 46, 255, 0.4);
+
+            &:hover {
+              box-shadow: 0 6px 18px rgba(93, 46, 255, 0.6);
+            }
+          }
+
+          &.secondary {
+            padding: 0.75rem 2rem;
+            border: 1px solid transparent;
+            background: transparent;
+            color: #9f71ff;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 transparent;
+
+            &:hover {
+              background: linear-gradient(
+                90deg,
+                rgba(159, 113, 255, 0.2),
+                rgba(255, 255, 255, 0.1)
+              );
+              color: #ffffff;
+              border-color: #9f71ff;
+              transform: translateY(-2px);
+              box-shadow: 0 0 15px #9f71ff;
+            }
+          }
+        }
+      }
+    }
+
+    .image-container {
+      flex: 1 1 400px;
+      text-align: center;
+      animation: fadeInRight 1.2s ease forwards;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        transform: scale(0.9);
+        opacity: 0;
+        animation: zoomIn 1s ease forwards 0.6s;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+  }
+
+  /* Animaciones */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+  }
+
+  @keyframes fadeInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+  }
+
+  @keyframes zoomIn {
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+}

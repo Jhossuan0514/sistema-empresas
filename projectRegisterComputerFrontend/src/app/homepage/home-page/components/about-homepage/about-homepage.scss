@@ -1,0 +1,147 @@
+.about-home { 
+  position: relative;
+  background: linear-gradient(135deg, #f4f1ff, #e2dbff);
+  padding: 60px 30px;
+  overflow: hidden;
+
+  /* Fondo animado con patrón + gradiente suave */
+  .animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png'),
+      radial-gradient(circle at 25% 30%, rgba(173, 140, 255, 0.3), transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(116, 72, 255, 0.25), transparent 50%);
+    opacity: 0.35;
+    animation: move-bg 20s linear infinite alternate;
+    z-index: 0;
+  }
+
+  @keyframes move-bg {
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 100px 100px, 200px 200px, 350px 350px; }
+  }
+
+  /* Decoración sutil (blob de luz detrás de la imagen) */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #6c63ff20, transparent 70%);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  /* Franja diagonal inferior */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #f7f7f7;
+    transform: skewY(-3deg);
+    z-index: 1;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #2c205f;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+
+      /* Línea decorativa bajo el título */
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #5d2eff, #7448ff);
+        border-radius: 2px;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s ease forwards;
+      animation-delay: 0.3s;
+
+      .text {
+        flex: 1 1 500px;
+        font-size: 1rem;
+        color: #444;
+
+        p {
+          margin-bottom: 20px;
+          line-height: 1.7;
+
+          strong {
+            color: #2c205f;
+          }
+        }
+      }
+
+      .image {
+        flex: 1 1 400px;
+        text-align: center;
+
+        img {
+          max-width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+          transform: scale(0.9);
+          opacity: 0;
+          animation: zoomIn 1s ease forwards;
+          animation-delay: 0.5s;
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+          }
+        }
+      }
+    }
+  }
+
+  /* Animaciones */
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes zoomIn {
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}

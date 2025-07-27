@@ -1,0 +1,27 @@
+<div class="welcome-section">
+  <h2>¡Bienvenido, {{ nombreUsuario }}!</h2>
+  <p>Nos alegra tenerte de nuevo. Desde aquí puedes gestionar las diferentes funcionalidades del sistema.</p>
+</div>
+
+<div class="dashboard-wrapper">
+  <mat-card class="dashboard-card" routerLink="/empresa">
+    <mat-icon>add_business</mat-icon>
+    <p>Registrar Empresa</p>
+  </mat-card>
+
+  <mat-card class="dashboard-card" routerLink="/listaEmpresa">
+    <mat-icon>list_alt</mat-icon>
+    <p>Listado de Empresas</p>
+  </mat-card>
+
+  <mat-card class="dashboard-card" disabled>
+    <mat-icon>devices</mat-icon>
+    <p>Registro de Equipos</p>
+  </mat-card>
+
+  <mat-card class="dashboard-card" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <p>Cerrar Sesión</p>
+  </mat-card>
+</div>
+
